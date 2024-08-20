@@ -1,15 +1,26 @@
 /*
 Theme Name: webtion child
-Tags:  custom-menu, editor-style, featured-images
+Theme URI: https://github.com/mabchourjamila/portfolio
+Author: Jamila BOUMEHDI
+Author URI: https://github.com/mabchourjamila
+Author website: https://jamila-webdesign.com
+Description: Thème pour le site portfolio de Jamila BOUMEHDI
 Template: webtion
-Version: 1.1.0
+Version: 1.0
+Tags: jamila, développeuse wordpress
+Text Domain: portfolio
 */
-
-/*---------------------------------
-      write your css from here
-------------------------------------*/
 
 .pdlr0{
 	padding-left:0;
 	padding-right:0;
+}
+
+.gitem:hover .prot_content {
+    opacity: 1;
+}
+
+.pimgs img {
+    margin: auto;
+    object-fit: scale-down;
 }

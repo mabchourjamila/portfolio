@@ -51,14 +51,44 @@ get_template_part('includes/header', 'page-title'); ?>
 												if (isset($portgropss['_webtion_ptvalue'])) {
 													$portdec =  $portgropss['_webtion_ptvalue'];
 												} ?>
-												<li>
-													<b class="eleft"><?php echo esc_html($porttitle); ?></b>
-													<span class="eright"><?php echo esc_html($portdec); ?></span>
-												</li>
+												<?php if (!empty($portdec)){ // Vérifier si la description n'est pas vide 
+												?>
+													<li>
+
+														<?php if (strpos($portdec, 'github.com') !== false): // Si le lien contient 'github.com' 
+														?>
+															<a href="<?php echo esc_url($portdec); ?>" class="witr_btn" target="_blank">
+																<i class="fab fa-github"></i> <?php echo esc_html($porttitle); ?>
+															</a>
+														<?php elseif (filter_var($portdec, FILTER_VALIDATE_URL)): // Si c'est une URL valide mais pas GitHub (page web ou doc)
+														?>
+															<a href="<?php echo esc_url($portdec); ?>" class="witr_btn" target="_blank">
+																<i class="fas fa-link"></i> <?php echo esc_html($porttitle); ?>
+															</a>
+														<?php else: // Si le champs n'est pas un lien, afficher seulement le titre et la description 
+														?>
+															<b class="eleft"><?php echo esc_html($porttitle); ?></b>
+															<span class="eright"><?php echo esc_html($portdec); ?></span>
+														<?php endif; ?>
+													</li>
+												<?php } // Si description vide, ne rien afficher 
+												?>
 										<?php }
 										} ?>
 									</ul>
 								</div>
+
+								<div class="webtion-blog-social">
+									<div class="webtion-single-icon">
+										<?php
+										if (function_exists('webtion_blog_sharing')) {
+											webtion_blog_sharing();
+										}
+										?>
+									</div>
+								</div>
+
+								
 							</div>
 						</div>
 
